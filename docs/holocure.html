@@ -1,0 +1,2547 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Holocure 4-item combos</title>
+  <script src="../js/holocure.js"></script>
+  <link rel="stylesheet" href="../css/holocure.css">
+</head>
+<body>
+  <section id="filters">
+    <input type="radio" id="hide-checked" name="hide-show" onclick="show_type('hide')" checked="true"><label for="hide-checked">Hide combos using any checked items</label>
+    <br />
+    <input type="radio" id="show-union-checked" name="hide-show" onclick="show_type('union')"><label for="show-union-checked">Show combos using at least one checked item</label>
+    <br />
+    <input type="radio" id="show-intersection-checked" name="hide-show" onclick="show_type('intersection')"><label for="show-intersection-checked">Show combos using all of checked items</label>
+    <div id="filter_checkboxes">
+      <div>
+        <div>
+  <input class="weapon-hide" type="checkbox" name="BLBook" onclick="filter_weapons('BLBook')">
+  <label for="BLBook" class="icon BLBook">BL Book</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="CEOsTears" onclick="filter_weapons('CEOsTears')">
+  <label for="CEOsTears" class="icon CEOsTears">CEO's Tears</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="CuttingBoard" onclick="filter_weapons('CuttingBoard')">
+  <label for="CuttingBoard" class="icon CuttingBoard">Cutting Board</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="EliteLavaBucket" onclick="filter_weapons('EliteLavaBucket')">
+  <label for="EliteLavaBucket" class="icon EliteLavaBucket">Elite Lava Bucket</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="FanBeam" onclick="filter_weapons('FanBeam')">
+  <label for="FanBeam" class="icon FanBeam">Fan Beam</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="Glowstick" onclick="filter_weapons('Glowstick')">
+  <label for="Glowstick" class="icon Glowstick">Glowstick</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="HoloBomb" onclick="filter_weapons('HoloBomb')">
+  <label for="HoloBomb" class="icon HoloBomb">Holo Bomb</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="IdolSong" onclick="filter_weapons('IdolSong')">
+  <label for="IdolSong" class="icon IdolSong">Idol Song</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="PlugTypeAsacoco" onclick="filter_weapons('PlugTypeAsacoco')">
+  <label for="PlugTypeAsacoco" class="icon PlugTypeAsacoco">Plug Type Asacoco</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="PsychoAxe" onclick="filter_weapons('PsychoAxe')">
+  <label for="PsychoAxe" class="icon PsychoAxe">Psycho Axe</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="SpiderCooking" onclick="filter_weapons('SpiderCooking')">
+  <label for="SpiderCooking" class="icon SpiderCooking">Spider Cooking</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="WamyWater" onclick="filter_weapons('WamyWater')">
+  <label for="WamyWater" class="icon WamyWater">Wamy Water</label>
+</div>
+
+<div>
+  <input class="weapon-hide" type="checkbox" name="X-Potato" onclick="filter_weapons('X-Potato')">
+  <label for="X-Potato" class="icon X-Potato">X-Potato</label>
+</div>
+
+        <input type="button" value="Invert selection" onclick="invert_weapons()">
+      </div>
+      <div>
+        <div>
+  <input type="checkbox" name="BLFujoshi" class="collab-hide" onclick="filter_collabs('BLFujoshi')">
+  <label for="BLFujoshi" class="icon BLFujoshi">BL Fujoshi (BL Book + Psycho Axe)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="Breathe-InTypeAsacoco" class="collab-hide" onclick="filter_collabs('Breathe-InTypeAsacoco')">
+  <label for="Breathe-InTypeAsacoco" class="icon Breathe-InTypeAsacoco">Breathe-In Type Asacoco (Holo Bomb + Plug Type Asacoco)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="BrokenDreams" class="collab-hide" onclick="filter_collabs('BrokenDreams')">
+  <label for="BrokenDreams" class="icon BrokenDreams">Broken Dreams (Spider Cooking + CEO's Tears)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="DragonFire" class="collab-hide" onclick="filter_collabs('DragonFire')">
+  <label for="DragonFire" class="icon DragonFire">Dragon Fire (Fan Beam + Plug Type Asacoco)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="EliteCooking" class="collab-hide" onclick="filter_collabs('EliteCooking')">
+  <label for="EliteCooking" class="icon EliteCooking">Elite Cooking (Elite Lava Bucket + Spider Cooking)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="FlatteningBoard" class="collab-hide" onclick="filter_collabs('FlatteningBoard')">
+  <label for="FlatteningBoard" class="icon FlatteningBoard">Flattening Board (Holo Bomb + Cutting Board)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="FrozenSea" class="collab-hide" onclick="filter_collabs('FrozenSea')">
+  <label for="FrozenSea" class="icon FrozenSea">Frozen Sea (BL Book + Wamy Water)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="IdolConcert" class="collab-hide" onclick="filter_collabs('IdolConcert')">
+  <label for="IdolConcert" class="icon IdolConcert">Idol Concert (Glowstick + Idol Song)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="LightBeam" class="collab-hide" onclick="filter_collabs('LightBeam')">
+  <label for="LightBeam" class="icon LightBeam">Light Beam (Glowstick + Fan Beam)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="MiComet" class="collab-hide" onclick="filter_collabs('MiComet')">
+  <label for="MiComet" class="icon MiComet">MiComet (Elite Lava Bucket + Psycho Axe)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="RapDog" class="collab-hide" onclick="filter_collabs('RapDog')">
+  <label for="RapDog" class="icon RapDog">Rap Dog (X-Potato + Idol Song)</label>
+</div>
+
+<div>
+  <input type="checkbox" name="StreamofTears" class="collab-hide" onclick="filter_collabs('StreamofTears')">
+  <label for="StreamofTears" class="icon StreamofTears">Stream of Tears (Fan Beam + CEO's Tears)</label>
+</div>
+
+        <input type="button" value="Invert selection" onclick="invert_collabs()">
+      </div>
+      <input type="button" value="Reset" onclick="reset()" id="reset-button">
+    </div>
+  </section>
+  <ul id="combos">
+    <li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams Glowstick FanBeam LightBeam">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking Glowstick FanBeam LightBeam">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco Glowstick IdolSong IdolConcert FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard Glowstick FanBeam LightBeam">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi SpiderCooking CEOsTears BrokenDreams Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi FanBeam PlugTypeAsacoco DragonFire EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi FanBeam PlugTypeAsacoco DragonFire EliteLavaBucket SpiderCooking EliteCooking Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi FanBeam PlugTypeAsacoco DragonFire EliteLavaBucket SpiderCooking EliteCooking X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard Glowstick FanBeam LightBeam">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi EliteLavaBucket SpiderCooking EliteCooking Glowstick IdolSong IdolConcert FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi EliteLavaBucket SpiderCooking EliteCooking Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi EliteLavaBucket SpiderCooking EliteCooking X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb CuttingBoard FlatteningBoard Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook PsychoAxe BLFujoshi HoloBomb CuttingBoard FlatteningBoard X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="BLFujoshi icon"><!--BL Fujoshi--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams BLBook WamyWater FrozenSea X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams Glowstick FanBeam LightBeam EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco SpiderCooking CEOsTears BrokenDreams EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking BLBook WamyWater FrozenSea X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking BLBook WamyWater FrozenSea FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking Glowstick IdolSong IdolConcert FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket SpiderCooking EliteCooking X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco BLBook WamyWater FrozenSea X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco Glowstick FanBeam LightBeam EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb PlugTypeAsacoco Breathe-InTypeAsacoco EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="Breathe-InTypeAsacoco icon"><!--Breathe-In Type Asacoco--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire BLBook WamyWater FrozenSea X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams FanBeam PlugTypeAsacoco DragonFire EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard Glowstick FanBeam LightBeam EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams HoloBomb CuttingBoard FlatteningBoard EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="SpiderCooking CEOsTears BrokenDreams Glowstick FanBeam LightBeam EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="BrokenDreams icon"><!--Broken Dreams--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire EliteLavaBucket SpiderCooking EliteCooking BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire EliteLavaBucket SpiderCooking EliteCooking BLBook WamyWater FrozenSea X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire HoloBomb CuttingBoard FlatteningBoard EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="FanBeam PlugTypeAsacoco DragonFire BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="DragonFire icon"><!--Dragon Fire--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking HoloBomb CuttingBoard FlatteningBoard X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="EliteLavaBucket SpiderCooking EliteCooking BLBook WamyWater FrozenSea X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="EliteCooking icon"><!--Elite Cooking--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam EliteLavaBucket PsychoAxe MiComet">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard BLBook WamyWater FrozenSea X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard Glowstick FanBeam LightBeam EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="HoloBomb CuttingBoard FlatteningBoard EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="FlatteningBoard icon"><!--Flattening Board--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook WamyWater FrozenSea Glowstick IdolSong IdolConcert EliteLavaBucket PsychoAxe MiComet FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="IdolConcert icon"><!--Idol Concert--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook WamyWater FrozenSea Glowstick FanBeam LightBeam EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog">
+  <ul>
+    <li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="LightBeam icon"><!--Light Beam--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+  </ul>
+</li>
+
+<li class="BLBook WamyWater FrozenSea EliteLavaBucket PsychoAxe MiComet X-Potato IdolSong RapDog FanBeam CEOsTears StreamofTears">
+  <ul>
+    <li>
+  <div class="FrozenSea icon"><!--Frozen Sea--></div>
+</li>
+
+<li>
+  <div class="MiComet icon"><!--MiComet--></div>
+</li>
+
+<li>
+  <div class="RapDog icon"><!--Rap Dog--></div>
+</li>
+
+<li>
+  <div class="StreamofTears icon"><!--Stream of Tears--></div>
+</li>
+
+  </ul>
+</li>
+
+  </ul>
+</body>
+</html>

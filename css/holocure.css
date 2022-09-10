@@ -1,0 +1,67 @@
+ul {
+  list-style-type: none;
+}
+
+#filter_checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#filter_checkboxes>:not(:last-child) {
+  margin-right: 30px;
+}
+
+.icon::before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  background-image: url("../img/holocure_sprite.png");
+  display: inline-block;
+  margin-right: 0.5em;
+  position: relative;
+  top: 10px;
+}
+
+.icon.SpiderCooking::before { background-position: -25px 0px; }
+.icon.WamyWater::before { background-position: -50px 0px; }
+.icon.RapDog::before { background-position: -75px 0px; }
+.icon.StreamofTears::before { background-position: -100px 0px; }
+.icon.PlugTypeAsacoco::before { background-position: -125px 0px; }
+.icon.PsychoAxe::before { background-position: -150px 0px; }
+.icon.IdolSong::before { background-position: -175px 0px; }
+.icon.MiComet::before { background-position: -200px 0px; }
+.icon.FrozenSea::before { background-position: -225px 0px; }
+.icon.LightBeam::before { background-position: -250px 0px; }
+.icon.FanBeam::before { background-position: -275px 0px; }
+.icon.IdolConcert::before { background-position: -300px 0px; }
+.icon.HoloBomb::before { background-position: -325px 0px; }
+.icon.Glowstick::before { background-position: -350px 0px; }
+.icon.FlatteningBoard::before { background-position: -375px 0px; }
+.icon.EliteLavaBucket::before { background-position: -400px 0px; }
+.icon.BLBook::before { background-position: -425px 0px; }
+.icon.BrokenDreams::before { background-position: -450px 0px; }
+.icon.BLFujoshi::before { background-position: -475px 0px; }
+.icon.Breathe-InTypeAsacoco::before { background-position: -500px 0px; }
+.icon.CuttingBoard::before { background-position: -525px 0px; }
+.icon.CEOsTears::before { background-position: -550px 0px; }
+.icon.EliteCooking::before { background-position: -575px 0px; }
+.icon.DragonFire::before { background-position: -600px 0px; }
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#combos {
+  max-width: 60vw;
+  line-height: 50px;
+}
+
+#combos .icon::before {
+  transform: scale(2);
+  margin: 10px;
+}
+
+#reset-button {
+  flex-basis: 100%;
+}
